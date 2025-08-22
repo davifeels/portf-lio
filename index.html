@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davi Anderson - Analista de Sistemas | Segurança da Informação</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="demo-styles.css">
+    <link rel="stylesheet" href="gallery.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>Davi Anderson</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#projects" class="nav-link">Projetos</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Davi Anderson <span class="gradient-text">Batista Martins</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Analista de Sistemas | Segurança da Informação | Tecnologia da Informação
+                </p>
+                <p class="hero-location">
+                    📍 Planaltina - DF | 📧 davifeels33@gmail.com | 📱 (61) 99428-5138
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+                    <a href="#contact" class="btn btn-secondary">Contato</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Segurança</span>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-eye"></i>
+                    <span>Vigilância</span>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-brain"></i>
+                    <span>IA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Analista de Sistemas especializado em Segurança da Informação e Tecnologia da Informação. 
+                        Graduado em Banco de Dados pela UniCesumar, com experiência em desenvolvimento de sistemas, 
+                        criptografia, análise de dados e implementação de soluções de segurança.
+                    </p>
+                    <div class="education-section">
+                        <h3>Formação Acadêmica</h3>
+                        <div class="education-item">
+                            <strong>Graduação em Banco de Dados</strong>
+                            <span>Faculdade UniCesumar (2º Semestre) - Atual</span>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <i class="fab fa-java"></i>
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-js-square"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-angular"></i>
+                            <span>Angular</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Segurança</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            <div class="projects-grid">
+                <!-- Sistema de Vigilância -->
+                <div class="project-card" data-project="vigilancia">
+                    <div class="project-image">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sistema de Vigilância</h3>
+                        <p>
+                            Sistema de vigilância com detecção de movimento e captura de vídeo via 
+                            webcam, com interface para visualização e controle.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary" onclick="openProject('vigilancia')">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewCode('vigilancia')">
+                                <i class="fab fa-github"></i> GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projeto Sentinel -->
+                <div class="project-card" data-project="sentinelvision">
+                    <div class="project-image">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Projeto Sentinel</h3>
+                        <p>
+                            Sistema completo de reconhecimento facial com autenticação, persistência e 
+                            controle de acesso.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">SQLAlchemy</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">FAISS</span>
+                            <span class="tech-tag">Docker</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary" onclick="openProject('sentinelvision')">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewCode('sentinelvision')">
+                                <i class="fab fa-github"></i> GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FURIA - Know Your Fan -->
+                <div class="project-card" data-project="furia">
+                    <div class="project-image">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>FURIA - Know Your Fan</h3>
+                        <p>
+                            Aplicação fullstack com coleta de dados e validação de fãs da FURIA, incluindo 
+                            autenticação, análise de redes sociais e dashboard completo.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Axios</span>
+                            <span class="tech-tag">CSS Modular</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary" onclick="openProject('furia')">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewCode('furia')">
+                                <i class="fab fa-github"></i> GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chatbot FURIA -->
+                <div class="project-card" data-project="chatbot">
+                    <div class="project-image">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Chatbot FURIA</h3>
+                        <p>
+                            Página web interativa com perfis personalizados dos jogadores da FURIA e chatbot 
+                            individual para cada um.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="btn btn-primary" onclick="openProject('chatbot')">
+                                <i class="fas fa-external-link-alt"></i> Ver Demo
+                            </button>
+                            <button class="btn btn-secondary" onclick="viewCode('chatbot')">
+                                <i class="fab fa-github"></i> GitHub
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>davifeels33@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(61) 99428-5138</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>linkedin.com/in/davi-tech</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>github.com/davifeels</span>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Seu Nome" required>
+                    <input type="email" placeholder="Seu Email" required>
+                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modals -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <span class="lightbox-nav lightbox-prev" onclick="prevImage()">&#10094;</span>
+            <span class="lightbox-nav lightbox-next" onclick="nextImage()">&#10095;</span>
+            <img id="lightboxImage" class="lightbox-media" src="" alt="">
+            <div id="lightboxCaption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
