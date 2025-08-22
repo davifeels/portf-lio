@@ -7,13 +7,15 @@
     text-align: center;
     color: #e2e8f0;
     margin-bottom: 2.25rem;
-    font-size: 2.25rem;
+    font-size: clamp(1.25rem, 3.5vw, 2.25rem);
+    line-height: 1.2;
 }
 
 .demo-container {
     max-width: 1100px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 1.25rem;
+    padding: 0 clamp(12px, 3.5vw, 20px);
 }
 
 .demo-header {
@@ -21,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    padding: 1rem;
+    padding: clamp(12px, 3vw, 16px);
     background: #f8fafc;
     border-radius: 10px;
 }
@@ -66,7 +68,7 @@
 .camera-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: clamp(10px, 3vw, 16px);
     margin-bottom: 2rem;
 }
 
@@ -85,7 +87,7 @@
     justify-content: center;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: clamp(10px, 3vw, 16px);
 }
 
 .camera-placeholder i {
@@ -178,7 +180,7 @@
 .upload-area {
     border: 2px dashed #cbd5e1;
     border-radius: 10px;
-    padding: 3rem;
+    padding: clamp(18px, 6vw, 48px);
     text-align: center;
     transition: all 0.3s ease;
 }
@@ -189,7 +191,7 @@
 }
 
 .upload-area i {
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 6vw, 3rem);
     color: #64748b;
     margin-bottom: 1rem;
 }
@@ -203,7 +205,7 @@
     background: white;
     border: 1px solid #e2e8f0;
     border-radius: 10px;
-    padding: 1.5rem;
+    padding: clamp(14px, 3.8vw, 24px);
 }
 
 .analysis-results h4 {
@@ -250,7 +252,7 @@
     background: white;
     border: 1px solid #e2e8f0;
     border-radius: 10px;
-    padding: 1.5rem;
+    padding: clamp(14px, 3.8vw, 24px);
 }
 
 .facial-recognition h4 {
@@ -309,7 +311,7 @@
     background: white;
     border: 1px solid #e2e8f0;
     border-radius: 10px;
-    padding: 1.5rem;
+    padding: clamp(14px, 3.8vw, 24px);
 }
 
 .features-list h4 {
@@ -331,12 +333,12 @@
 /* Responsive */
 @media (max-width: 768px) {
     .project-demo {
-        padding: 2rem 0;
+        padding: clamp(16px, 5vw, 32px) 0;
     }
 
     .project-showcase {
-        padding: 1.5rem;
-        margin: 1.5rem 0;
+        padding: clamp(12px, 4vw, 20px);
+        margin: clamp(12px, 4vw, 20px) 0;
     }
 
     .camera-grid {
@@ -360,8 +362,14 @@
 
     .showcase-content {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: clamp(10px, 3.5vw, 20px);
     }
+}
+
+/* Evita que conteúdos grandes transbordem no modal em telas pequenas */
+.project-demo, .demo-container, .project-showcase, .showcase-content,
+.analysis-results, .facial-recognition, .features-list {
+    overflow-wrap: anywhere;
 }
 
 @media (min-width: 1024px) {

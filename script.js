@@ -33,15 +33,23 @@ window.addEventListener('scroll', () => {
     const navMenu = document.querySelector('.nav-menu');
     const navContainer = document.querySelector('.nav-container');
     const navLogo = document.querySelector('.nav-logo');
+    const hamburger = document.querySelector('.hamburger');
     
     if (window.scrollY > 100) {
         navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
         navbar.style.color = '#333';
-        // Ocultar nomes do menu quando desce
+        // Fechar/ocultar menu mobile totalmente ao descer
+        navMenu.classList.remove('active');
         navMenu.style.opacity = '0';
         navMenu.style.visibility = 'hidden';
-        navMenu.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+        navMenu.style.display = 'none';
+        if (hamburger) hamburger.classList.remove('active');
+        // Esconder botão hambúrguer em mobile durante scroll para baixo
+        if (window.innerWidth <= 768 && hamburger) {
+            hamburger.style.opacity = '0';
+            hamburger.style.pointerEvents = 'none';
+        }
         // Centralizar logo quando desce
         navContainer.style.justifyContent = 'center';
         navContainer.style.transition = 'justify-content 0.3s ease';
@@ -59,10 +67,14 @@ window.addEventListener('scroll', () => {
         navbar.style.background = 'rgba(15, 23, 42, 0.95)';
         navbar.style.boxShadow = 'none';
         navbar.style.color = '#e2e8f0';
-        // Mostrar nomes do menu quando volta ao topo
+        // Reexibir menu/hambúrguer quando volta ao topo
         navMenu.style.opacity = '1';
         navMenu.style.visibility = 'visible';
-        navMenu.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+        navMenu.style.display = '';
+        if (window.innerWidth <= 768 && hamburger) {
+            hamburger.style.opacity = '';
+            hamburger.style.pointerEvents = '';
+        }
         // Voltar logo para posição original (esquerda)
         navContainer.style.justifyContent = 'space-between';
         navContainer.style.transition = 'justify-content 0.3s ease';
@@ -109,11 +121,13 @@ const closeBtn = document.querySelector('.close');
 
 closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
 });
 
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = 'none';
+        document.body.classList.remove('modal-open');
     }
 });
 
@@ -196,14 +210,15 @@ function openProject(projectType) {
                                     <div class="gallery-item" onclick="openLightbox('analise.facial.jpg')"><img src="assets/sentinel/analise.facial.jpg" alt="Análise Facial em Tempo Real"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
                                     <div class="gallery-item" onclick="openLightbox('usuariosAtivos.jpg')"><img src="assets/sentinel/usuariosAtivos.jpg" alt="Usuários Ativos no Sistema"><div class="gallery-overlay"><i class="fas fa-expand"></i></div></div>
                                 </div>
-                                <h4 style="color: #f1f5f9; margin: 2rem 0 1rem 0;">Demonstração em Vídeo</h4>
-                                <div class="video-container">
-                                    <video class="video-player" controls poster="assets/sentinel/dashboard1.jpg">
-                                        <source src="assets/sentinel/videocompleto.mp4" type="video/mp4">
-                                        Seu navegador não suporta vídeos HTML5.
-                                    </video>
+                                <div class="demo-video-block">
+                                    <div class="video-title" style="margin-bottom: 0.5rem;">Demonstração Completa</div>
+                                    <div class="video-container">
+                                        <video class="video-player" controls poster="assets/sentinel/dashboard1.jpg">
+                                            <source src="assets/sentinel/videocompleto.mp4" type="video/mp4">
+                                            Seu navegador não suporta vídeos HTML5.
+                                        </video>
+                                    </div>
                                     <div class="video-controls">
-                                        <div class="video-title">Demonstração Completa</div>
                                         <button class="play-btn" onclick="playVideo(this)">▶ Play</button>
                                     </div>
                                 </div>
@@ -309,6 +324,7 @@ function openProject(projectType) {
     
     modalBody.innerHTML = content;
     modal.style.display = 'block';
+    document.body.classList.add('modal-open');
 }
 
 function viewCode(projectType) {
@@ -365,15 +381,36 @@ window.addEventListener('load', () => {
     }
 });
 
-// Parallax effect for floating cards
-window.addEventListener('scroll', () => {
+// Parallax effect for floating cards (desativado no mobile)
+let parallaxEnabled = null;
+
+function applyParallax() {
+    if (!parallaxEnabled) return;
     const scrolled = window.pageYOffset;
     const parallax = document.querySelectorAll('.floating-card');
     parallax.forEach((card, index) => {
         const speed = 0.5 + (index * 0.1);
         card.style.transform = `translateY(${scrolled * speed}px)`;
     });
-});
+}
+
+function setParallaxMode() {
+    const isDesktop = window.innerWidth >= 769;
+    if (parallaxEnabled === isDesktop) return; // nada muda
+    parallaxEnabled = isDesktop;
+    const cards = document.querySelectorAll('.floating-card');
+    if (!parallaxEnabled) {
+        // resetar transform quando desativado
+        cards.forEach((c) => (c.style.transform = 'translateY(0)'));
+    } else {
+        applyParallax();
+    }
+}
+
+window.addEventListener('scroll', applyParallax, { passive: true });
+window.addEventListener('resize', setParallaxMode);
+window.addEventListener('orientationchange', setParallaxMode);
+window.addEventListener('load', setParallaxMode);
 
 // (removido) Scroll overlay logic
 
@@ -436,8 +473,11 @@ function prevImage() {
 
 // Video player functionality
 function playVideo(button) {
-    const videoContainer = button.closest('.video-container');
-    const video = videoContainer.querySelector('video');
+    // Suporta novo layout (.demo-video-block) e mantém compatibilidade
+    const block = button.closest('.demo-video-block') || button.closest('.video-container');
+    if (!block) return;
+    const video = block.querySelector('video');
+    if (!video) return;
     if (video.paused) {
         video.play();
         button.textContent = '⏸ Pause';

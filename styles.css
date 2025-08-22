@@ -19,6 +19,13 @@ body {
     overflow-x: hidden;
 }
 
+/* Mídias nunca excedem a largura do container */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -29,12 +36,21 @@ body {
 .navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
     z-index: 1000;
-    transition: all 0.3s ease;
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado oculto ao rolar (mobile) */
+@media (max-width: 768px) {
+  .navbar.navbar-hidden {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+  }
 }
 
 .nav-container {
@@ -110,9 +126,10 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 70%, #475569 100%);
     position: relative;
-    overflow: hidden;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    overflow-x: hidden; /* evita vazamento horizontal */
+    overflow-y: visible; /* deixa os cards visíveis na borda inferior */
 }
 
 .hero::before {
@@ -146,10 +163,12 @@ body {
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.2;
+    overflow-wrap: anywhere; /* evita texto saindo para fora */
+    hyphens: auto;
 }
 
 .gradient-text {
@@ -243,7 +262,8 @@ body {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 5; /* garante visibilidade acima das próximas seções */
+    overflow: visible; /* evita corte durante animação */
 }
 
 .floating-card {
@@ -261,7 +281,7 @@ body {
     animation: float 3s ease-in-out infinite;
     box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
     pointer-events: auto;
-    z-index: 2;
+    z-index: 6; /* acima da grade/linhas e de outros elementos da hero */
 }
 
 .card-security {
@@ -290,8 +310,8 @@ body {
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    0%, 100% { transform: translateX(var(--tx, 0)) translateY(0); }
+    50% { transform: translateX(var(--tx, 0)) translateY(-20px); }
 }
 
 /* Profile Photo */
@@ -428,6 +448,15 @@ body {
     color: #60a5fa;
 }
 
+/* SVG variant for skill icons (e.g., PostgreSQL) */
+.skill-item img.skill-icon-svg {
+    width: 2rem;
+    height: 2rem;
+    display: block;
+    /* approximate theme blue via filter on monochrome SVG */
+    filter: invert(60%) sepia(46%) saturate(1317%) hue-rotate(187deg) brightness(101%) contrast(94%);
+}
+
 /* Projects Section */
 .projects {
     padding: 100px 0;
@@ -483,7 +512,8 @@ body {
 
 .project-content p {
     color: #cbd5e1;
-    margin-bottom: 1.5rem;
+    margin: 1rem 0 1.25rem;
+    overflow-wrap: anywhere;
     line-height: 1.6;
 }
 
@@ -495,13 +525,13 @@ body {
 }
 
 .tech-tag {
-    background: rgba(59, 130, 246, 0.2);
-    color: #93c5fd;
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    background: rgba(11, 18, 32, 0.85); /* mais escuro */
+    color: #eef6ff; /* texto mais claro */
+    border: 1px solid rgba(96, 165, 250, 0.35);
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .project-buttons {
@@ -513,18 +543,20 @@ body {
 .tech-tag {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, #1e293b, #334155);
-    color: #60a5fa;
+    background: linear-gradient(135deg, #0b1220, #1b263b); /* mais escuro */
+    color: #f1f7ff; /* mais claro */
     border-radius: 20px;
     font-size: 0.9rem;
-    font-weight: 500;
-    border: 1px solid #334155;
-    transition: all 0.3s ease;
+    font-weight: 600;
+    border: 1px solid rgba(96, 165, 250, 0.35);
+    transition: all 0.25s ease;
+    text-shadow: 0 0 6px rgba(96, 165, 250, 0.35);
 }
 
 .tech-tag:hover {
-    background: linear-gradient(135deg, #334155, #475569);
-    border-color: #60a5fa;
+    background: linear-gradient(135deg, #1b263b, #24324a); /* hover levemente mais claro */
+    border-color: #7cc0ff;
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -656,14 +688,15 @@ body {
     margin-top: 2rem;
 }
 
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-right: auto;
-    margin-left: 0;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-left: auto;
-    margin-right: 0;
+@media (min-width: 769px) {
+    .timeline-item:nth-child(odd) .timeline-content {
+        margin-right: auto;
+        margin-left: 0;
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: auto;
+        margin-right: 0;
+    }
 }
 
 .timeline-content h3 {
@@ -791,6 +824,13 @@ body {
     background: rgba(251, 191, 36, 0.2);
     color: #fbbf24;
     border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+/* Beginner level */
+.skill-item.beginner .skill-level {
+    background: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .soft-skills {
@@ -991,6 +1031,20 @@ body {
 
 /* (removido) Scroll Overlay */
 
+/* Impede scroll do body quando o modal está aberto */
+body.modal-open { overflow: hidden; }
+
+/* Modal responsivo no mobile */
+@media (max-width: 768px) {
+    .modal-content {
+        width: min(96vw, 760px);
+        margin: 12px auto;
+        padding: clamp(14px, 4.5vw, 24px);
+        border-radius: 16px;
+        max-height: calc(100dvh - 24px);
+    }
+}
+
 /* ================================================================== */
 /* DESIGN RESPONSIVO OTIMIZADO
 /* ================================================================== */
@@ -1047,32 +1101,65 @@ body {
     .timeline::before {
         left: 20px;
     }
-    
-    .timeline-item {
+    /* Garante centralização do container da timeline */
+    .timeline {
+        display: flex;
         flex-direction: column;
-        margin-left: 40px;
+        align-items: center;
     }
     
-    .timeline-item:nth-child(even) {
-        flex-direction: column;
+    .timeline-item {
+        /* Troca para grid para eliminar qualquer herança de alinhamento do flex */
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center; /* centraliza conteúdo no eixo X e Y */
+        margin-left: 0; /* remove deslocamento lateral que cortava conteúdo */
+        width: 100%;
+    }
+    /* Não force largura 100% em todos os filhos para não interferir na badge */
+    .timeline-item > .timeline-content { width: 100%; }
+    
+    .timeline-item:nth-child(even) { grid-template-columns: 1fr; }
+    /* Garante mesma orientação e alinhamento para todos */
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        width: 100%;
+        max-width: min(560px, 92vw); /* limite fluido para telas muito estreitas */
+        margin: 0 auto !important; /* centraliza horizontalmente */
+        box-sizing: border-box;
+        left: auto !important; right: auto !important; /* neutraliza padrões de desktop */
     }
     
     .timeline-date {
         position: relative;
-        left: -40px;
-        transform: none;
-        margin-bottom: 1rem;
-        align-self: flex-start;
+        left: 50%; /* centraliza horizontalmente acima do card */
+        transform: translateX(-50%);
+        margin-bottom: 0.75rem;
+        align-self: center;
     }
     
     .timeline-content {
         width: 100%;
-        margin: 0;
+        margin: 0 auto; /* centraliza por padrão */
+        max-width: min(560px, 92vw);
+        justify-self: center; /* garante centro mesmo em grid */
+        overflow: hidden; /* evita que algum filho empurre o card para fora */
+        overflow-wrap: anywhere; /* quebra palavras longas */
     }
+    .timeline-content *,
+    .timeline-content li,
+    .timeline-content p,
+    .timeline-content h3,
+    .timeline-content h4 { overflow-wrap: anywhere; word-break: break-word; max-width: 100%; }
     
     .timeline-item:nth-child(odd) .timeline-content,
-    .timeline-item:nth-child(even) .timeline-content {
-        margin: 0;
+    .timeline-item:nth-child(even) .timeline-content,
+    .timeline-item .timeline-content {
+        margin: 0 auto !important; /* mantém centralizado e não sobrescreve a regra anterior */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        align-self: center !important; /* ignora alinhamentos par/ímpar herdados */
+        float: none !important; /* previne qualquer float legado */
     }
     
     /* Skills Mobile */
@@ -1101,10 +1188,20 @@ body {
     .nav-container {
         padding: 1rem 15px;
     }
+    /* Evita quebra feia do nome na navbar */
+    .nav-logo {
+        font-size: 1.1rem;
+        max-width: 70vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     
     .hamburger {
         display: flex;
     }
+    /* Esconde o texto da logo se necessário em telas muito estreitas */
+    .nav-logo span { max-width: 52vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     
     .nav-menu {
         position: fixed;
@@ -1130,8 +1227,9 @@ body {
     }
     
     /* Hero Section Mobile */
+    /* Mais espaço no topo para não ficar sob a navbar fixa */
     .hero {
-        padding: 80px 0 40px;
+        padding: 120px 0 120px; /* mais espaço para o bloco de cards empilhados sem sobrepor a próxima seção */
     }
     
     .hero-container {
@@ -1207,40 +1305,54 @@ body {
         margin-bottom: 1.5rem;
     }
     
-    /* Floating Cards Mobile - Melhor posicionamento */
+    /* Floating Cards Mobile - volta a flutuar e distribui L/C/R */
     .floating-card {
-        padding: 1rem;
+        width: clamp(118px, 42vw, 150px);
+        height: clamp(66px, 22vw, 86px);
+        padding: clamp(0.5rem, 1.8vw, 0.9rem) clamp(0.6rem, 2.2vw, 1rem);
         border-radius: 16px;
-        min-width: 70px;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute; /* volta a ser absoluto no mobile */
+        /* Usa keyframe que mantém o translateX base para não perder centralização */
+        --tx: 0; /* deslocamento X base (pode ser % ou px) */
+        animation: float-mobile 6s ease-in-out infinite;
+        z-index: 2;
     }
-    
     .floating-card i {
-        font-size: 1.5rem;
+        font-size: clamp(1rem, 3.2vw, 1.25rem);
     }
-    
     .floating-card span {
-        font-size: 0.8rem;
-        font-weight: 500;
+        font-size: clamp(0.78rem, 2.6vw, 0.95rem);
+        font-weight: 600;
     }
     
-    .card-security {
-        top: 25%;
-        left: 15%;
-        animation-delay: 0s;
+    /* Empilhados centralizados no rodapé, estável e sem sobreposição */
+    .hero-visual { position: relative; min-height: clamp(500px, 72vh, 640px); }
+    .floating-elements {
+        position: absolute;
+        inset: auto 0 12px 0; /* bottom: 12px, centraliza na largura */
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* um abaixo do outro */
+        align-items: center;
+        justify-content: flex-end;
+        gap: clamp(12px, 4.5vw, 22px); /* espaço responsivo entre os cards */
+        pointer-events: none;
+        z-index: 3; /* garante que fique acima do conteúdo seguinte */
     }
-    
-    .card-surveillance {
-        top: 45%;
-        left: 40%;
-        animation-delay: 1s;
-    }
-    
-    .card-ai {
-        bottom: 25%;
-        left: 65%;
-        transform: translateX(10%);
-        animation-delay: 2s;
-        color: white !important;
+    .floating-card { position: static; animation: float-mobile 6s ease-in-out infinite; }
+    .card-security { animation-delay: 0s; }
+    .card-surveillance { animation-delay: 0.6s; }
+    .card-ai { animation-delay: 1.2s; }
+
+    /* Keyframes de flutuação suave no eixo Y */
+    @keyframes float-mobile {
+        0%, 100% { transform: translateX(var(--tx, 0)) translateY(0); }
+        50% { transform: translateX(var(--tx, 0)) translateY(-8px); }
     }
     
     /* Sections Mobile */
@@ -1252,7 +1364,23 @@ body {
         font-size: 2rem;
         margin-bottom: 2rem;
     }
-    
+
+    /* Evitar sobreposição com botões flutuantes laterais no mobile */
+    .contact .container { padding-right: clamp(12px, 6vw, 56px); }
+    .contact-info {
+        grid-template-columns: 1fr; /* uma coluna no mobile para não cortar */
+        gap: clamp(10px, 3.5vw, 16px);
+    }
+}
+
+/* Acessibilidade: reduz animações para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    /* Mantém animação perceptível para o usuário que prefere menos movimento */
+    .floating-card { animation: float-mobile 6s ease-in-out infinite !important; }
+}
+
+/* Mobile layout fixes (faltava abrir o @media) */
+@media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1280,6 +1408,17 @@ body {
         display: flex;
         justify-content: center;
     }
+    /* Melhor responsividade do Entre em Contato */
+    .contact-info { gap: 12px; }
+    .contact-item {
+        width: 100%;
+        padding: 12px 14px;
+        gap: 10px;
+    }
+    .contact-item i { font-size: 1rem; }
+    .contact-item span { font-size: 0.95rem; line-height: 1.3; }
+    /* Evita "pulo" no hover em telas touch */
+    .contact-item:hover { transform: none; }
     
     .contact-form {
         grid-template-columns: 1fr;
@@ -1313,16 +1452,15 @@ body {
 
 /* Mobile muito pequeno */
 @media (max-width: 480px) {
-    .hero-title {
-        font-size: 1.8rem;
-    }
+    .hero { padding-top: 124px; padding-bottom: 140px; } /* garante espaço para os cards empilhados */
+    .hero-title { font-size: 1.65rem; line-height: 1.25; }
     
     .hero-subtitle {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
     
     .hero-location {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
     }
     
     .hero-visual {
@@ -1342,34 +1480,10 @@ body {
         height: 120px;
     }
     
-    .floating-card {
-        padding: 0.25rem 0.3rem;
-        min-width: 30px;
-    }
-    
-    .floating-card i {
-        font-size: 0.7rem;
-    }
-    
-    .floating-card span {
-        font-size: 0.45rem;
-    }
-    
-    .card-security {
-        top: 10%;
-        left: 8%;
-    }
-    
-    .card-surveillance {
-        top: 45%;
-        left: 25%;
-    }
-    
-    .card-ai {
-        bottom: 10%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+    /* Tamanhos mais compactos para caber melhor */
+    .floating-card { width: 120px; height: 74px; padding: 0.6rem 0.9rem; }
+    .floating-card i { font-size: 1.1rem; }
+    .floating-card span { font-size: 0.8rem; }
     
     .btn {
         padding: 12px 20px;
@@ -1393,6 +1507,45 @@ body {
         padding: 0.6rem;
         min-width: 70px;
     }
+}
+
+/* ===== Estabilidade e viewports muito estreitas ===== */
+html { overflow-x: hidden; }
+
+@media (max-width: 320px) {
+    .hero { padding-top: 128px; }
+    .hero-title { font-size: 1.8rem; }
+    .hero-subtitle { font-size: 0.9rem; }
+    .hero-location { font-size: 0.8rem; }
+
+    .btn { padding: 10px 18px; font-size: 0.85rem; min-width: 112px; }
+
+    .floating-card { width: 110px; height: 74px; padding: 0.6rem 0.8rem; }
+    .floating-card i { font-size: 1.05rem; }
+    .floating-card span { font-size: 0.78rem; }
+
+    /* Reposiciona para caber no viewport sem overflow (sem sobrescrever transform da animação) */
+    .card-security { top: 58%; left: 6%; }
+    .card-surveillance { top: 68%; left: 38%; }
+    .card-ai { top: 78%; left: 56%; }
+}
+
+@media (max-width: 260px) { /* ~230px */
+    .hero { padding-top: 132px; }
+    .hero-title { font-size: 1.55rem; }
+    .hero-subtitle { font-size: 0.85rem; }
+    .hero-location { font-size: 0.75rem; }
+
+    .btn { padding: 9px 14px; font-size: 0.8rem; min-width: 100px; }
+
+    .floating-card { width: 96px; height: 68px; padding: 0.55rem 0.7rem; }
+    .floating-card i { font-size: 0.95rem; }
+    .floating-card span { font-size: 0.72rem; }
+
+    /* Centraliza os três cartões para evitar overflow lateral (sem sobrescrever o transform da animação) */
+    .card-security { top: 58%; left: 50%; --tx: -50%; }
+    .card-surveillance { top: 70%; left: 50%; --tx: -50%; }
+    .card-ai { top: 82%; left: 50%; --tx: -50%; }
 }
 
 /* Desktop grande */
