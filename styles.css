@@ -54,12 +54,13 @@ img, video {
 }
 
 .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 20px;
+    max-width: 100%;
+    margin: 0;
+    padding: 1.5rem 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .nav-logo {
@@ -160,6 +161,10 @@ img, video {
 
 .hero-content {
     color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero-title {
@@ -241,12 +246,7 @@ img, video {
     justify-content: center;
 }
 
-.profile-corner {
-    position: absolute;
-    top: 120px;
-    right: 50px;
-    z-index: 5;
-}
+/* Profile corner não é mais necessário - foto integrada no hero-content */
 
 .profile-section {
     display: flex;
@@ -262,8 +262,11 @@ img, video {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 5; /* garante visibilidade acima das próximas seções */
-    overflow: visible; /* evita corte durante animação */
+    z-index: 5;
+    overflow: visible;
+    /* Melhora performance em animações */
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .floating-card {
@@ -272,46 +275,76 @@ img, video {
     backdrop-filter: blur(15px);
     border: 1px solid rgba(96, 165, 250, 0.3);
     border-radius: 20px;
-    padding: 1.5rem;
+    padding: 2rem 2.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
     color: white;
     animation: float 3s ease-in-out infinite;
     box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
     pointer-events: auto;
-    z-index: 6; /* acima da grade/linhas e de outros elementos da hero */
+    z-index: 6;
+    min-width: 140px;
+    min-height: 120px;
+    /* Otimizações para performance */
+    will-change: transform;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    /* Variável CSS para controle de posição X */
+    --tx: 0;
 }
 
 .card-security {
-    top: 20%;
-    left: 8%;
+    top: 10%;
+    left: 2%;
     animation-delay: 0s;
+    --tx: 0;
 }
 
 .card-surveillance {
-    top: 60%;
-    left: 25%;
+    bottom: 10%;
+    left: 2%;
     animation-delay: 1s;
+    --tx: 0;
 }
 
 .card-ai {
-    bottom: 20%;
-    right: 15%;
+    top: 10%;
+    right: 2%;
     animation-delay: 2s;
+    --tx: 0;
 }
 
 .floating-card i {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 0.5rem;
     color: #60a5fa;
     text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
 }
 
+.floating-card span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
 @keyframes float {
-    0%, 100% { transform: translateX(var(--tx, 0)) translateY(0); }
-    50% { transform: translateX(var(--tx, 0)) translateY(-20px); }
+    0%, 100% { 
+        transform: translateX(var(--tx, 0)) translateY(0);
+    }
+    50% { 
+        transform: translateX(var(--tx, 0)) translateY(-20px);
+    }
+}
+
+@keyframes float-mobile {
+    0%, 100% { 
+        transform: translateX(var(--tx, 0)) translateY(0);
+    }
+    50% { 
+        transform: translateX(var(--tx, 0)) translateY(-8px);
+    }
 }
 
 /* Profile Photo */
@@ -1074,6 +1107,94 @@ body.modal-open { overflow: hidden; }
         width: 180px;
         height: 180px;
     }
+    
+    /* Ajustes para floating cards em tablets */
+    .floating-card {
+        padding: 1.2rem 1.4rem;
+    }
+    
+    .card-security {
+        top: 25%;
+        left: 5%;
+    }
+    
+    .card-surveillance {
+        top: 65%;
+        left: 20%;
+    }
+    
+    .card-ai {
+        bottom: 25%;
+        right: 10%;
+    }
+}
+
+/* Telas em landscape (deitadas) - tablets e phones */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: 100vh;
+        padding: 80px 0 60px;
+    }
+    
+    .hero-container {
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .hero-visual {
+        min-height: 300px;
+    }
+    
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1rem;
+    }
+    
+    /* Floating cards mais compactos em landscape */
+    .floating-card {
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+    }
+    
+    .floating-card i {
+        font-size: 1.5rem;
+    }
+    
+    .floating-card span {
+        font-size: 0.8rem;
+    }
+    
+    /* Reposicionamento para landscape */
+    .card-security {
+        top: 15%;
+        left: 10%;
+    }
+    
+    .card-surveillance {
+        top: 50%;
+        left: 5%;
+    }
+    
+    .card-ai {
+        bottom: 15%;
+        right: 8%;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero-location {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* Mobile - Telas pequenas */
@@ -1195,6 +1316,12 @@ body.modal-open { overflow: hidden; }
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+    
+    /* Controle de quebra de linha no nome */
+    .name-no-break {
+        white-space: nowrap;
+        display: inline-block;
     }
     
     .hamburger {
@@ -1323,36 +1450,58 @@ body.modal-open { overflow: hidden; }
         z-index: 2;
     }
     .floating-card i {
-        font-size: clamp(1rem, 3.2vw, 1.25rem);
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+        margin-bottom: 0.3rem;
     }
     .floating-card span {
-        font-size: clamp(0.78rem, 2.6vw, 0.95rem);
+        font-size: clamp(0.7rem, 2.2vw, 0.85rem);
         font-weight: 600;
+        text-align: center;
+        line-height: 1.2;
     }
     
-    /* Empilhados centralizados no rodapé, estável e sem sobreposição */
-    .hero-visual { position: relative; min-height: clamp(500px, 72vh, 640px); }
+    /* Layout horizontal para mobile portrait - estilo jogo da velha */
+    .hero-visual { 
+        position: relative; 
+        min-height: clamp(400px, 60vh, 500px);
+    }
+    
     .floating-elements {
         position: absolute;
-        inset: auto 0 12px 0; /* bottom: 12px, centraliza na largura */
+        inset: auto 0 20px 0;
         width: 100%;
         display: flex;
-        flex-direction: column; /* um abaixo do outro */
+        flex-direction: row;
         align-items: center;
-        justify-content: flex-end;
-        gap: clamp(12px, 4.5vw, 22px); /* espaço responsivo entre os cards */
+        justify-content: center;
+        gap: clamp(8px, 2.5vw, 15px);
         pointer-events: none;
-        z-index: 3; /* garante que fique acima do conteúdo seguinte */
+        z-index: 3;
     }
-    .floating-card { position: static; animation: float-mobile 6s ease-in-out infinite; }
+    
+    .floating-card { 
+        position: static; 
+        animation: float-mobile 6s ease-in-out infinite;
+        width: clamp(90px, 28vw, 120px);
+        height: clamp(70px, 20vw, 90px);
+        padding: clamp(0.6rem, 2vw, 1rem);
+        min-width: unset;
+        min-height: unset;
+        box-sizing: border-box;
+    }
+    
     .card-security { animation-delay: 0s; }
     .card-surveillance { animation-delay: 0.6s; }
     .card-ai { animation-delay: 1.2s; }
 
-    /* Keyframes de flutuação suave no eixo Y */
+    /* Keyframes otimizados para mobile */
     @keyframes float-mobile {
-        0%, 100% { transform: translateX(var(--tx, 0)) translateY(0); }
-        50% { transform: translateX(var(--tx, 0)) translateY(-8px); }
+        0%, 100% { 
+            transform: translateX(var(--tx, 0)) translateY(0);
+        }
+        50% { 
+            transform: translateX(var(--tx, 0)) translateY(-6px);
+        }
     }
     
     /* Sections Mobile */
@@ -1379,8 +1528,82 @@ body.modal-open { overflow: hidden; }
     .floating-card { animation: float-mobile 6s ease-in-out infinite !important; }
 }
 
-/* Mobile layout fixes (faltava abrir o @media) */
-@media (max-width: 768px) {
+/* Mobile landscape específico */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        padding: 60px 0 40px;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        text-align: left;
+    }
+    
+    .hero-content {
+        order: 1;
+    }
+    
+    .hero-visual {
+        order: 2;
+        min-height: 250px;
+    }
+    
+    .profile-corner {
+        position: static;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Floating cards em posições fixas para landscape mobile */
+    .floating-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+    
+    .floating-card {
+        position: absolute;
+        width: clamp(90px, 25vw, 120px);
+        height: clamp(60px, 16vw, 80px);
+        padding: clamp(0.4rem, 1.2vw, 0.7rem);
+    }
+    
+    .card-security {
+        top: 20%;
+        left: 5%;
+    }
+    
+    .card-surveillance {
+        top: 55%;
+        left: 15%;
+    }
+    
+    .card-ai {
+        bottom: 20%;
+        right: 8%;
+    }
+    
+    .floating-card i {
+        font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    }
+    
+    .floating-card span {
+        font-size: clamp(0.7rem, 2vw, 0.85rem);
+    }
+}
+
+/* Mobile portrait layout fixes */
+@media (max-width: 768px) and (orientation: portrait) {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -1519,33 +1742,105 @@ html { overflow-x: hidden; }
     .hero-location { font-size: 0.8rem; }
 
     .btn { padding: 10px 18px; font-size: 0.85rem; min-width: 112px; }
-
-    .floating-card { width: 110px; height: 74px; padding: 0.6rem 0.8rem; }
-    .floating-card i { font-size: 1.05rem; }
-    .floating-card span { font-size: 0.78rem; }
-
-    /* Reposiciona para caber no viewport sem overflow (sem sobrescrever transform da animação) */
-    .card-security { top: 58%; left: 6%; }
-    .card-surveillance { top: 68%; left: 38%; }
-    .card-ai { top: 78%; left: 56%; }
 }
 
-@media (max-width: 260px) { /* ~230px */
+@media (max-width: 260px) {
     .hero { padding-top: 132px; }
     .hero-title { font-size: 1.55rem; }
     .hero-subtitle { font-size: 0.85rem; }
     .hero-location { font-size: 0.75rem; }
 
     .btn { padding: 9px 14px; font-size: 0.8rem; min-width: 100px; }
+}
 
-    .floating-card { width: 96px; height: 68px; padding: 0.55rem 0.7rem; }
-    .floating-card i { font-size: 0.95rem; }
-    .floating-card span { font-size: 0.72rem; }
+/* FLOATING CARDS - CONFIGURAÇÃO FINAL E DEFINITIVA */
+/* Sobrescreve todas as outras regras com !important */
 
-    /* Centraliza os três cartões para evitar overflow lateral (sem sobrescrever o transform da animação) */
-    .card-security { top: 58%; left: 50%; --tx: -50%; }
-    .card-surveillance { top: 70%; left: 50%; --tx: -50%; }
-    .card-ai { top: 82%; left: 50%; --tx: -50%; }
+/* Desktop - Cards nos cantos */
+@media (min-width: 769px) {
+    .floating-card {
+        padding: 2rem 2.5rem !important;
+        min-width: 140px !important;
+        min-height: 120px !important;
+        backdrop-filter: blur(15px) !important;
+    }
+    
+    .floating-card i {
+        font-size: 2.5rem !important;
+    }
+    
+    .floating-card span {
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+    }
+    
+    .card-security {
+        top: 10% !important;
+        left: 2% !important;
+        bottom: auto !important;
+        right: auto !important;
+    }
+    
+    .card-surveillance {
+        bottom: 10% !important;
+        left: 2% !important;
+        top: auto !important;
+        right: auto !important;
+    }
+    
+    .card-ai {
+        top: 10% !important;
+        right: 2% !important;
+        bottom: auto !important;
+        left: auto !important;
+    }
+}
+
+/* Mobile Portrait - Cards horizontais */
+@media (max-width: 768px) and (orientation: portrait) {
+    .floating-elements {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: clamp(8px, 2.5vw, 15px) !important;
+        position: absolute !important;
+        bottom: 20px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+    }
+    
+    .floating-card {
+        position: static !important;
+        width: clamp(90px, 28vw, 120px) !important;
+        height: clamp(70px, 20vw, 90px) !important;
+        padding: clamp(0.6rem, 2vw, 1rem) !important;
+        min-width: unset !important;
+        min-height: unset !important;
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+    }
+    
+    .floating-card i {
+        font-size: clamp(1.2rem, 4vw, 1.6rem) !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .floating-card span {
+        font-size: clamp(0.7rem, 2.2vw, 0.85rem) !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
+    }
+}
+
+/* Nome sem quebra */
+.name-no-break {
+    white-space: nowrap !important;
+    display: inline-block !important;
 }
 
 /* Desktop grande */
@@ -1572,39 +1867,5 @@ html { overflow-x: hidden; }
     .profile-photo {
         width: 180px;
         height: 180px;
-    }
-    
-    .floating-card {
-        padding: 1.8rem 2rem;
-        backdrop-filter: blur(25px);
-    }
-    
-    .floating-card i {
-        font-size: 2.5rem;
-    }
-    
-    .card-security {
-        top: 25%;
-        left: 5%;
-    }
-    
-    .card-surveillance {
-        top: 65%;
-        left: 20%;
-    }
-    
-    .card-ai {
-        bottom: 25%;
-        right: 10%;
-        padding: 1.6rem 1.8rem !important;
-        min-width: 100px !important;
-    }
-    
-    .card-ai i {
-        font-size: 2.2rem !important;
-    }
-    
-    .card-ai span {
-        font-size: 1.1rem !important;
     }
 }

@@ -1,0 +1,124 @@
+/* ===== FLOATING CARDS - VERSÃO FINAL LIMPA ===== */
+
+/* ANIMAÇÃO PULSE SIMPLES */
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* REGRAS GERAIS */
+.floating-card {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.card-security {
+    animation-delay: 0s;
+}
+
+.card-surveillance {
+    animation-delay: 0.7s;
+}
+
+.card-ai {
+    animation-delay: 1.4s;
+}
+
+/* DESKTOP - Cards nos cantos */
+@media (min-width: 769px) {
+    .floating-card {
+        padding: 2rem 2.5rem;
+        min-width: 140px;
+        min-height: 120px;
+        backdrop-filter: blur(15px);
+        border-radius: 20px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(96, 165, 250, 0.3);
+        box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+    }
+    
+    .floating-card i {
+        font-size: 2.5rem;
+        color: #60a5fa;
+        margin-bottom: 0.5rem;
+    }
+    
+    .floating-card span {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: white;
+        text-align: center;
+    }
+    
+    .card-security {
+        top: 10%;
+        left: 2%;
+        position: absolute;
+    }
+    
+    .card-surveillance {
+        bottom: 10%;
+        left: 2%;
+        position: absolute;
+    }
+    
+    .card-ai {
+        top: 10%;
+        right: 2%;
+        position: absolute;
+        z-index: 5;
+    }
+}
+
+/* MOBILE PORTRAIT - Cards horizontais */
+@media (max-width: 768px) and (orientation: portrait) {
+    .floating-elements {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        position: relative;
+        width: 100%;
+        margin-top: 20px;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    
+    .floating-card {
+        position: static;
+        width: clamp(80px, 30vw, 110px);
+        height: clamp(60px, 20vw, 80px);
+        padding: clamp(0.4rem, 1.5vw, 0.8rem);
+        border-radius: 12px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(96, 165, 250, 0.3);
+        box-shadow: 0 4px 16px rgba(59, 130, 246, 0.2);
+        backdrop-filter: blur(10px);
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: pulse 1.8s ease-in-out infinite;
+    }
+    
+    .floating-card i {
+        font-size: clamp(1rem, 3.5vw, 1.4rem);
+        color: #60a5fa;
+        margin-bottom: clamp(0.2rem, 0.8vw, 0.4rem);
+    }
+    
+    .floating-card span {
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+        font-weight: 600;
+        color: white;
+        text-align: center;
+        line-height: 1.2;
+    }
+}

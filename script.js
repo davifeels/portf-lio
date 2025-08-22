@@ -381,41 +381,78 @@ window.addEventListener('load', () => {
     }
 });
 
-// Parallax effect for floating cards (desativado no mobile)
+// Parallax effect for floating cards - responsivo e otimizado
 let parallaxEnabled = null;
+let isScrolling = false;
+
+// LIMPAR ESTILOS INLINE DOS CARDS
+function clearInlineStyles() {
+    const cards = document.querySelectorAll('.floating-card');
+    cards.forEach(card => {
+        card.style.removeProperty('--parallaxY');
+        card.style.removeProperty('opacity');
+        card.style.removeProperty('transition');
+        card.style.removeProperty('transform');
+    });
+}
 
 function applyParallax() {
-    if (!parallaxEnabled) return;
-    const scrolled = window.pageYOffset;
-    const parallax = document.querySelectorAll('.floating-card');
-    parallax.forEach((card, index) => {
-        const speed = 0.5 + (index * 0.1);
-        card.style.transform = `translateY(${scrolled * speed}px)`;
+    // Parallax desabilitado para focar na animação
+    return;
+}
+
+function forceCardsVisible() {
+    const cards = document.querySelectorAll('.floating-card');
+    cards.forEach(card => {
+        card.style.removeProperty('--parallaxY');
+        card.style.removeProperty('transform');
+        card.style.removeProperty('opacity');
+        card.style.removeProperty('transition');
+        card.style.visibility = 'visible';
+        card.style.display = 'flex';
     });
 }
 
 function setParallaxMode() {
     const isDesktop = window.innerWidth >= 769;
-    if (parallaxEnabled === isDesktop) return; // nada muda
-    parallaxEnabled = isDesktop;
+    const isLandscape = window.innerWidth > window.innerHeight;
+    
+    // Habilita parallax apenas em desktop ou tablets em landscape
+    const shouldEnableParallax = isDesktop || (window.innerWidth >= 768 && isLandscape);
+    
+    if (parallaxEnabled === shouldEnableParallax) return;
+    
+    parallaxEnabled = shouldEnableParallax;
     const cards = document.querySelectorAll('.floating-card');
+    
     if (!parallaxEnabled) {
-        // resetar transform quando desativado
-        cards.forEach((c) => (c.style.transform = 'translateY(0)'));
+        // Reset para mobile/portrait - zera apenas a contribuição do parallax
+        cards.forEach((card) => {
+            card.style.setProperty('--parallaxY', '0px');
+        });
     } else {
         applyParallax();
     }
 }
 
-window.addEventListener('scroll', applyParallax, { passive: true });
-window.addEventListener('resize', setParallaxMode);
-window.addEventListener('orientationchange', setParallaxMode);
-window.addEventListener('load', setParallaxMode);
+// Event listeners otimizados
+window.addEventListener('scroll', forceCardsVisible, { passive: true });
+window.addEventListener('resize', () => {
+    clearTimeout(window.resizeTimeout);
+    window.resizeTimeout = setTimeout(setParallaxMode, 100);
+});
+window.addEventListener('orientationchange', () => {
+    setTimeout(setParallaxMode, 200); // Aguarda orientação estabilizar
+});
+window.addEventListener('load', () => {
+    clearInlineStyles();
+});
 
-// (removido) Scroll overlay logic
+document.addEventListener('DOMContentLoaded', () => {
+    clearInlineStyles();
+});
 
 // Lightbox functionality
-let currentImageIndex = 0;
 let galleryImages = [];
 
 const sentinelGalleryImages = [
