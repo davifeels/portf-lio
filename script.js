@@ -30,12 +30,52 @@ document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', 
 // Navbar scroll effect
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
+    const navMenu = document.querySelector('.nav-menu');
+    const navContainer = document.querySelector('.nav-container');
+    const navLogo = document.querySelector('.nav-logo');
+    
     if (window.scrollY > 100) {
         navbar.style.background = 'rgba(255, 255, 255, 0.98)';
         navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        navbar.style.color = '#333';
+        // Ocultar nomes do menu quando desce
+        navMenu.style.opacity = '0';
+        navMenu.style.visibility = 'hidden';
+        navMenu.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+        // Centralizar logo quando desce
+        navContainer.style.justifyContent = 'center';
+        navContainer.style.transition = 'justify-content 0.3s ease';
+        // Forçar centralização absoluta
+        navLogo.style.position = 'absolute';
+        navLogo.style.left = '50%';
+        navLogo.style.transform = 'translateX(-50%)';
+        navLogo.style.transition = 'all 0.3s ease';
+        // Alterar cor dos links para escuro quando navbar fica branco
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.style.color = '#333';
+        });
+        navLogo.style.color = '#333';
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        navbar.style.background = 'rgba(15, 23, 42, 0.95)';
         navbar.style.boxShadow = 'none';
+        navbar.style.color = '#e2e8f0';
+        // Mostrar nomes do menu quando volta ao topo
+        navMenu.style.opacity = '1';
+        navMenu.style.visibility = 'visible';
+        navMenu.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
+        // Voltar logo para posição original (esquerda)
+        navContainer.style.justifyContent = 'space-between';
+        navContainer.style.transition = 'justify-content 0.3s ease';
+        // Resetar posicionamento absoluto
+        navLogo.style.position = 'static';
+        navLogo.style.left = 'auto';
+        navLogo.style.transform = 'none';
+        navLogo.style.transition = 'all 0.3s ease';
+        // Voltar cor original dos links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.style.color = '#e2e8f0';
+        });
+        navLogo.style.color = '#60a5fa';
     }
 });
 
@@ -280,24 +320,27 @@ function viewCode(projectType) {
     window.open(repoUrl, '_blank');
 }
 
-// Contact form submission
-document.querySelector('.contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Enviando...';
-    submitBtn.disabled = true;
-    setTimeout(() => {
-        submitBtn.textContent = 'Mensagem Enviada!';
-        submitBtn.style.background = '#10b981';
+// Contact form submission (somente se existir)
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Enviando...';
+        submitBtn.disabled = true;
         setTimeout(() => {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-            submitBtn.style.background = '';
-            e.target.reset();
-        }, 2000);
-    }, 1500);
-});
+            submitBtn.textContent = 'Mensagem Enviada!';
+            submitBtn.style.background = '#10b981';
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.background = '';
+                e.target.reset();
+            }, 2000);
+        }, 1500);
+    });
+}
 
 // Typing effect for hero title
 function typeWriter(element, text, speed = 100) {
@@ -331,6 +374,8 @@ window.addEventListener('scroll', () => {
         card.style.transform = `translateY(${scrolled * speed}px)`;
     });
 });
+
+// (removido) Scroll overlay logic
 
 // Lightbox functionality
 let currentImageIndex = 0;

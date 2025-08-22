@@ -21,6 +21,8 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Início</a></li>
                 <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#experience" class="nav-link">Experiência</a></li>
+                <li><a href="#skills" class="nav-link">Habilidades</a></li>
                 <li><a href="#projects" class="nav-link">Projetos</a></li>
                 <li><a href="#contact" class="nav-link">Contato</a></li>
             </ul>
@@ -35,33 +37,43 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
+            <div class="profile-corner">
+                <div class="profile-photo">
+                    <img src="assets/images/profile.jpg" alt="Davi Anderson" class="profile-img">
+                    <div class="profile-overlay">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
             <div class="hero-content">
                 <h1 class="hero-title">
-                    Davi Anderson <span class="gradient-text">Batista Martins</span>
+                    Davi Anderson Batista Martins Da Silva
                 </h1>
                 <p class="hero-subtitle">
-                    Analista de Sistemas | Segurança da Informação | Tecnologia da Informação
+                    Desenvolvedor Full Stack | Analista de Sistemas | Segurança da Informação
                 </p>
                 <p class="hero-location">
-                    📍 Planaltina - DF | 📧 davifeels33@gmail.com | 📱 (61) 99428-5138
+                    📍 Planaltina - DF | 📧 davifeels333@gmail.com | 📱 (61) 99428-5138
                 </p>
                 <div class="hero-buttons">
                     <a href="#projects" class="btn btn-primary">Ver Projetos</a>
                     <a href="#contact" class="btn btn-secondary">Contato</a>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="floating-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Segurança</span>
-                </div>
-                <div class="floating-card">
-                    <i class="fas fa-eye"></i>
-                    <span>Vigilância</span>
-                </div>
-                <div class="floating-card">
-                    <i class="fas fa-brain"></i>
-                    <span>IA</span>
+            <div class="hero-visual">
+                <div class="floating-elements">
+                    <div class="floating-card card-security">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Segurança</span>
+                    </div>
+                    <div class="floating-card card-surveillance">
+                        <i class="fas fa-eye"></i>
+                        <span>Vigilância</span>
+                    </div>
+                    <div class="floating-card card-ai">
+                        <i class="fas fa-brain"></i>
+                        <span>IA</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,9 +86,15 @@
             <div class="about-content">
                 <div class="about-text">
                     <p>
-                        Analista de Sistemas especializado em Segurança da Informação e Tecnologia da Informação. 
-                        Graduado em Banco de Dados pela UniCesumar, com experiência em desenvolvimento de sistemas, 
-                        criptografia, análise de dados e implementação de soluções de segurança.
+                        <strong>Desenvolvedor Iniciante | Estudante de Banco de Dados</strong><br>
+                        Desenvolvedor em formação com 8 meses de experiência prática em desenvolvimento web. 
+                        Aprendendo tecnologias como Python, JavaScript, HTML/CSS e explorando áreas como 
+                        inteligência artificial e desenvolvimento de sistemas.
+                    </p>
+                    <p>
+                        <strong>Habilidades em Desenvolvimento:</strong> Criação de sites responsivos, desenvolvimento com Python/Flask, 
+                        JavaScript básico/intermediário, trabalho com bancos de dados SQLite/MySQL, 
+                        e projetos de reconhecimento facial usando OpenCV. Sempre buscando aprender novas tecnologias.
                     </p>
                     <div class="education-section">
                         <h3>Formação Acadêmica</h3>
@@ -85,38 +103,275 @@
                             <span>Faculdade UniCesumar (2º Semestre) - Atual</span>
                         </div>
                     </div>
-                    <div class="skills">
-                        <div class="skill-item">
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Meses de Experiência</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Tecnologias</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">6+</div>
+                            <div class="stat-label">Projetos Concluídos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Precisão em Testes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experiência Profissional</h2>
+            <div class="timeline">
+                <p class="about-text">
+                Desenvolvedor iniciante apaixonado por tecnologia, com 8 meses de experiência em desenvolvimento web. 
+                Focado em aprender Python, JavaScript e frameworks modernos. Tenho interesse em inteligência artificial, 
+                reconhecimento facial e desenvolvimento de sistemas, sempre buscando evoluir minhas habilidades.
+            </p>
+                <div class="timeline-item">
+                    <div class="timeline-date">Fev/2025 - Atual</div>
+                    <div class="timeline-content">
+                        <h3>Estagiário em Desenvolvimento de Sistemas</h3>
+                        <h4>Instituto de Tecnologia da Informação</h4>
+                        <ul>
+                            <li><strong>Desenvolvimento Back-End:</strong> Java/Spring Boot e Node.js/Express, criando microserviços e APIs RESTful com alta cobertura de testes (Postman 80%)</li>
+                            <li><strong>Segurança & Criptografia:</strong> Implementação RSA, AES, padrões de assinatura digital (ICP-Brasil, PKI), autenticação JWT e criptografia de dados em repouso</li>
+                            <li><strong>Front-End Avançado:</strong> Angular, HTML5 e CSS3, construção de SPAs com componentes reutilizáveis, RxJS e Angular Material</li>
+                            <li><strong>DevOps & Infraestrutura:</strong> Modelagem, tuning e manutenção de bancos PostgreSQL e NoSQL, queries complexas e índices otimizados (melhoria de latência em 40%)</li>
+                            <li><strong>Análise de Dados:</strong> Elastic Search e criação de dashboards de KPIs em tempo real</li>
+                            <li><strong>CI/CD & Containerização:</strong> Docker e Kubernetes, suporte a deploys automatizados com rollback rápido</li>
+                            <li><strong>Integração de Pipelines:</strong> GitLab para build, testes automatizados e deploy em ambientes multicloud</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Set/2024 - Fev/2025</div>
+                    <div class="timeline-content">
+                        <h3>Estagiário em Administração de Banco de Dados</h3>
+                        <h4>Instituto de Tecnologia da Informação</h4>
+                        <ul>
+                            <li><strong>Automação de Processos:</strong> Scripts para ETL, carga e atualização de dados</li>
+                            <li><strong>Desenvolvimento SQL Avançado:</strong> Criação de tabelas, triggers, procedures e modelagem de dados</li>
+                            <li><strong>Documentação & BI:</strong> Estruturação documental e construção de painéis de BI</li>
+                            <li><strong>Suporte Técnico:</strong> Atendimento ao usuário e monitoramento de sistemas</li>
+                            <li><strong>Automação de Processos:</strong> Mapeamento e execução de processos automatizados em bancos de dados</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Linguagens de Programação</h3>
+                    <div class="skill-items">
+                        <div class="skill-item intermediate">
                             <i class="fab fa-java"></i>
                             <span>Java</span>
+                            <div class="skill-level">Intermediário</div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item intermediate">
                             <i class="fab fa-js-square"></i>
                             <span>JavaScript</span>
+                            <div class="skill-level">Intermediário</div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item intermediate">
                             <i class="fab fa-python"></i>
                             <span>Python</span>
+                            <div class="skill-level">Intermediário</div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item intermediate">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item advanced">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                            <div class="skill-level">Avançado</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
                             <i class="fas fa-database"></i>
                             <span>SQL</span>
+                            <div class="skill-level">Intermediário</div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-angular"></i>
-                            <span>Angular</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Frameworks & Tecnologias</h3>
+                    <div class="skill-items">
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-leaf"></i>
+                            <span>Spring Boot</span>
+                            <div class="skill-level">Intermediário</div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item intermediate">
                             <i class="fab fa-node-js"></i>
                             <span>Node.js</span>
+                            <div class="skill-level">Intermediário</div>
                         </div>
-                        <div class="skill-item">
+                        <div class="skill-item beginner">
+                            <i class="fab fa-angular"></i>
+                            <span>Angular</span>
+                            <div class="skill-level">Iniciante</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-flask"></i>
+                            <span>Flask</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-bolt"></i>
+                            <span>Express</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Banco de Dados</h3>
+                    <div class="skill-items">
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-elephant"></i>
+                            <span>PostgreSQL</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-leaf"></i>
+                            <span>MongoDB</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-cube"></i>
+                            <span>SQLite</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-search"></i>
+                            <span>Elastic Search</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-shield-alt"></i> Segurança & DevOps</h3>
+                    <div class="skill-items">
+                        <div class="skill-item beginner">
+                            <i class="fas fa-key"></i>
+                            <span>RSA/AES</span>
+                            <div class="skill-level">Iniciante</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-certificate"></i>
+                            <span>JWT</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
                             <i class="fab fa-docker"></i>
                             <span>Docker</span>
+                            <div class="skill-level">Intermediário</div>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Segurança</span>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-dharmachakra"></i>
+                            <span>Kubernetes</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fab fa-gitlab"></i>
+                            <span>GitLab CI/CD</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item beginner">
+                            <i class="fas fa-shield-virus"></i>
+                            <span>PKI/ICP-Brasil</span>
+                            <div class="skill-level">Iniciante</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Ferramentas & Testes</h3>
+                    <div class="skill-items">
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-mail-bulk"></i>
+                            <span>Postman</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-vial"></i>
+                            <span>Karma/Jasmine</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fas fa-bug"></i>
+                            <span>Cypress</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item beginner">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                            <div class="skill-level">Iniciante</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fab fa-linux"></i>
+                            <span>Linux</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                        <div class="skill-item intermediate">
+                            <i class="fab fa-windows"></i>
+                            <span>Windows</span>
+                            <div class="skill-level">Intermediário</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Competências Pessoais</h3>
+                    <div class="soft-skills">
+                        <div class="soft-skill-item">
+                            <i class="fas fa-users"></i>
+                            <span>Excelente comunicação e trabalho em equipe</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-tasks"></i>
+                            <span>Organização e gestão eficiente de múltiplas tarefas</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Proatividade e solução criativa de problemas</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-medal"></i>
+                            <span>Comprometimento com qualidade e entrega contínua</span>
+                        </div>
+                        <div class="soft-skill-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Aprendizado contínuo e adaptação a novas tecnologias</span>
                         </div>
                     </div>
                 </div>
@@ -137,9 +392,15 @@
                     <div class="project-content">
                         <h3>Sistema de Vigilância</h3>
                         <p>
-                            Sistema de vigilância com detecção de movimento e captura de vídeo via 
-                            webcam, com interface para visualização e controle.
+                            Sistema de monitoramento com detecção de movimento usando OpenCV, 
+                            captura de vídeo via webcam e interface web simples. Projeto desenvolvido 
+                            para aprender conceitos de visão computacional e detecção de movimento.
                         </p>
+                        <div class="project-highlights">
+                            <span class="highlight">✓ Detecção de movimento</span>
+                            <span class="highlight">✓ Interface web simples</span>
+                            <span class="highlight">✓ Captura de vídeo</span>
+                        </div>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">OpenCV</span>
@@ -164,18 +425,22 @@
                         <i class="fas fa-user-shield"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Projeto Sentinel</h3>
+                        <h3>Projeto Sentinel - Reconhecimento Facial</h3>
                         <p>
-                            Sistema completo de reconhecimento facial com autenticação, persistência e 
-                            controle de acesso.
+                            Sistema de reconhecimento facial desenvolvido com Python e OpenCV, 
+                            implementando algoritmos básicos para identificação de rostos. 
+                            Inclui interface simples e armazenamento em banco de dados SQLite.
                         </p>
+                        <div class="project-highlights">
+                            <span class="highlight">✓ Reconhecimento básico</span>
+                            <span class="highlight">✓ Interface funcional</span>
+                            <span class="highlight">✓ Banco de dados local</span>
+                        </div>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">SQLAlchemy</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">FAISS</span>
-                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">SQLite</span>
                         </div>
                         <div class="project-buttons">
                             <button class="btn btn-primary" onclick="openProject('sentinelvision')">
@@ -196,9 +461,15 @@
                     <div class="project-content">
                         <h3>FURIA - Know Your Fan</h3>
                         <p>
-                            Aplicação fullstack com coleta de dados e validação de fãs da FURIA, incluindo 
-                            autenticação, análise de redes sociais e dashboard completo.
+                            Site desenvolvido para a equipe de e-sports FURIA com formulários 
+                            para coleta de dados de fãs, validação básica e armazenamento em banco de dados. 
+                            Projeto focado em aprender desenvolvimento web fullstack.
                         </p>
+                        <div class="project-highlights">
+                            <span class="highlight">✓ Formulários interativos</span>
+                            <span class="highlight">✓ Validação de dados</span>
+                            <span class="highlight">✓ Design responsivo</span>
+                        </div>
                         <div class="project-tech">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
@@ -226,9 +497,15 @@
                     <div class="project-content">
                         <h3>Chatbot FURIA</h3>
                         <p>
-                            Página web interativa com perfis personalizados dos jogadores da FURIA e chatbot 
-                            individual para cada um.
+                            Página web interativa com perfis dos jogadores da FURIA e 
+                            chatbot simples para cada jogador usando JavaScript básico. 
+                            Projeto desenvolvido para praticar interatividade web.
                         </p>
+                        <div class="project-highlights">
+                            <span class="highlight">✓ Interface interativa</span>
+                            <span class="highlight">✓ JavaScript básico</span>
+                            <span class="highlight">✓ Design responsivo</span>
+                        </div>
                         <div class="project-tech">
                             <span class="tech-tag">HTML</span>
                             <span class="tech-tag">CSS</span>
@@ -244,6 +521,9 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Calculadora Simples -->
+                
             </div>
         </div>
     </section>
@@ -252,31 +532,26 @@
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
+            <p class="section-subtitle contact-subtitle">Falo PT e inglês básico · Respondo em até 24h</p>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>davifeels33@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                    <a class="contact-item" href="mailto:davifeels333@gmail.com" aria-label="Enviar email para davifeels333@gmail.com">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span>davifeels333@gmail.com</span>
+                    </a>
+                    <a class="contact-item" href="tel:+5561994285138" aria-label="Ligar para 61 99428-5138">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <span>(61) 99428-5138</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a class="contact-item" href="https://www.linkedin.com/in/davi-tech" target="_blank" rel="noopener" aria-label="Abrir LinkedIn de Davi">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
                         <span>linkedin.com/in/davi-tech</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
+                    </a>
+                    <a class="contact-item" href="https://github.com/davifeels" target="_blank" rel="noopener" aria-label="Abrir GitHub de Davi">
+                        <i class="fab fa-github" aria-hidden="true"></i>
                         <span>github.com/davifeels</span>
-                    </div>
+                    </a>
                 </div>
-                <form class="contact-form">
-                    <input type="text" placeholder="Seu Nome" required>
-                    <input type="email" placeholder="Seu Email" required>
-                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                </form>
             </div>
         </div>
     </section>
