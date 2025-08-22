@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo - Davi Anderson Batista Martins Da Silva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      color: #2c3e50;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px 0;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      border: 1px solid #e9ecef;
+    }
+    
+    .header-bg {
+      background: #2c3e50;
+      padding: 40px 0;
+      position: relative;
+    }
+    
+    header {
+      text-align: center;
+      color: white;
+      position: relative;
+      z-index: 1;
+      padding: 0 40px;
+    }
+    
+    .profile-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 4px solid white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .profile-photo i {
+      font-size: 48px;
+      color: #6c757d;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 20px;
+      opacity: 0.9;
+      color: #ecf0f1;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .contact-item a, .contact-item span {
+      color: white;
+      text-decoration: none;
+      font-weight: 400;
+    }
+    
+    .contact-item i {
+      font-size: 0.8rem;
+    }
+    
+    .content {
+      padding: 40px;
+      background: #ffffff;
+    }
+    
+    .section {
+      margin-bottom: 35px;
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e9ecef;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: #3498db;
+    }
+    
+    .section-icon {
+      color: #3498db;
+      font-size: 1.1rem;
+    }
+    
+    .experience-item, .education-item {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 6px;
+      border-left: 4px solid #3498db;
+      transition: all 0.3s ease;
+    }
+    
+    .experience-item:hover, .education-item:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transform: translateY(-1px);
+    }
+    
+    .job-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+    
+    .company-period {
+      color: #7f8c8d;
+      font-weight: 500;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    
+    .achievements {
+      list-style: none;
+    }
+    
+    .achievements li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      color: #34495e;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    
+    .achievements li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #3498db;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    
+    .skill-category {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+    }
+    
+    .skill-category h4 {
+      color: #2c3e50;
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+    }
+    
+    .skill-category h4 i {
+      color: #3498db;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .skill-tag {
+      background: #ffffff;
+      color: #2c3e50;
+      border: 1px solid #dee2e6;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .skill-tag:hover {
+      background: #3498db;
+      color: white;
+      border-color: #3498db;
+    }
+    
+    .projects-grid {
+      display: grid;
+      gap: 20px;
+    }
+    
+    .project-item {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+      transition: all 0.3s ease;
+    }
+    
+    .project-item:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transform: translateY(-1px);
+    }
+    
+    .project-title {
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+    }
+    
+    .project-title i {
+      color: #3498db;
+    }
+    
+    .project-item p {
+      color: #34495e;
+      margin-bottom: 12px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    
+    .project-link {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .project-link:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+    
+    .soft-skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    
+    .soft-skill {
+      background: #f8f9fa;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #e9ecef;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #2c3e50;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    
+    .soft-skill i {
+      color: #3498db;
+      font-size: 1rem;
+    }
+    
+    .download-section {
+      text-align: center;
+      padding: 25px;
+      background: #2c3e50;
+      margin: 40px -40px -40px;
+    }
+    
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #3498db;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .download-btn:hover {
+      background: #2980b9;
+      transform: translateY(-1px);
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        padding: 25px;
+      }
+      
+      header {
+        padding: 0 25px;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .download-section {
+        margin: 40px -25px -25px;
+      }
+    }
+    
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      
+      .container {
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+      }
+      
+      .header-bg {
+        background: #2c3e50 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      
+      .download-section {
+        display: none;
+      }
+      
+      .experience-item, .education-item, .project-item, .skill-category {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-bg">
+      <header>
+        <div class="profile-photo">
+          <img src="assets/images/profile.jpg" alt="Davi Anderson" class="profile-img">
+        </div>
+        <h1>Davi Anderson Batista Martins Da Silva</h1>
+        <div class="subtitle">Desenvolvedor Full Stack | Especialista em Segurança da Informação</div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:davifeel333@gmail.com">davifeel333@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:+5561994285138">(61) 99428-5138</a>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Planaltina – DF</span>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <a href="https://linkedin.com/in/davi-tech" target="_blank">LinkedIn</a>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-github"></i>
+            <a href="https://github.com/davifeels" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="content">
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-graduation-cap section-icon"></i>
+          Formação Acadêmica
+        </h2>
+        <div class="education-item">
+          <div class="job-title">Graduação em Banco de Dados</div>
+          <div class="company-period">
+            <i class="fas fa-university"></i>
+            Faculdade UniCesumar • 2º Semestre • 2023 - 2026
+          </div>
+          <p>Foco em modelagem de dados, administração de sistemas de banco de dados, business intelligence e análise de dados.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-briefcase section-icon"></i>
+          Experiência Profissional
+        </h2>
+        
+        <div class="experience-item">
+          <div class="job-title">Estagiário em Desenvolvimento de Sistemas</div>
+          <div class="company-period">
+            <i class="fas fa-building"></i>
+            Instituto de Tecnologia da Informação • Fev/2025 – Atual
+          </div>
+          <ul class="achievements">
+            <li>Desenvolvimento Back-End com <strong>Java/Spring Boot</strong> e <strong>Node.js/Express</strong>, criando microserviços e APIs RESTful com alta cobertura de testes (Postman 80%), reduzindo retrabalho em 30%.</li>
+            <li>Implementação de segurança e criptografia (<strong>RSA, AES</strong>), incluindo padrões de assinatura digital (ICP-Brasil, PKI), autenticação JWT e criptografia de dados em repouso.</li>
+            <li>Desenvolvimento Front-End com <strong>Angular</strong>, HTML e CSS: construção de SPAs com componentes reutilizáveis, RxJS e Angular Material, testes com Karma/Jasmine e Cypress, aumentando a cobertura de testes em 60%.</li>
+            <li>Modelagem, tuning e manutenção de bancos <strong>PostgreSQL</strong> e NoSQL com queries complexas e índices otimizados (melhoria de latência em 40%).</li>
+            <li>Análise de métricas com <strong>Elastic Search</strong> e criação de dashboards de KPIs em tempo real.</li>
+            <li>Containerização com <strong>Docker e Kubernetes</strong>, suporte a deploys automatizados com rollback rápido.</li>
+            <li>Integração de pipelines <strong>CI/CD com GitLab</strong> para build, testes automatizados e deploy em ambientes multicloud.</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <div class="job-title">Estagiário em Administração de Banco de Dados</div>
+          <div class="company-period">
+            <i class="fas fa-building"></i>
+            Instituto de Tecnologia da Informação • Set/2024 – Fev/2025
+          </div>
+          <ul class="achievements">
+            <li>Automação de processos de extração, carga e atualização de dados com <strong>scripts ETL</strong>.</li>
+            <li>Desenvolvimento de scripts SQL avançados, criação de tabelas, triggers, procedures e modelagem de dados.</li>
+            <li>Estruturação documental e construção de painéis de <strong>Business Intelligence</strong>.</li>
+            <li>Suporte técnico especializado, atendimento ao usuário e monitoramento proativo de sistemas.</li>
+            <li>Mapeamento e execução de processos automatizados em bancos de dados de alta performance.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-code section-icon"></i>
+          Projetos Técnicos Destacados
+        </h2>
+        <div class="projects-grid">
+          <div class="project-item">
+            <div class="project-title">
+              <i class="fas fa-shield-alt"></i>
+              <strong>Sistema de Vigilância</strong>
+            </div>
+            <p>Sistema de vigilância inteligente com detecção de movimento, captura de vídeo via webcam e interface web para visualização e controle em tempo real.</p>
+            <p><strong>Tecnologias:</strong> Python, OpenCV, Flask, HTML/CSS, SQLite</p>
+            <a href="https://github.com/davifeels/Sistema-De-Vigilancia" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> Ver no GitHub
+            </a>
+          </div>
+
+          <div class="project-item">
+            <div class="project-title">
+              <i class="fas fa-user-shield"></i>
+              <strong>Projeto Sentinel</strong>
+            </div>
+            <p>Sistema avançado de reconhecimento facial com autenticação biométrica, persistência de dados e controle de acesso seguro.</p>
+            <p><strong>Tecnologias:</strong> Python, Flask, SQLAlchemy, PostgreSQL, FAISS, Docker</p>
+            <a href="https://github.com/davifeels/ProjetoSentinel" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> Ver no GitHub
+            </a>
+          </div>
+
+          <div class="project-item">
+            <div class="project-title">
+              <i class="fas fa-users"></i>
+              <strong>FURIA - Know Your Fan</strong>
+            </div>
+            <p>Aplicação fullstack completa para coleta e validação de dados de fãs da FURIA com interface moderna e responsiva.</p>
+            <p><strong>Tecnologias:</strong> React, Node.js, Express, MySQL, Axios, CSS Modular</p>
+            <a href="https://github.com/davifeels/furia-know-your-fan" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> Ver no GitHub
+            </a>
+          </div>
+
+          <div class="project-item">
+            <div class="project-title">
+              <i class="fas fa-robot"></i>
+              <strong>Chatbot FURIA</strong>
+            </div>
+            <p>Página web interativa com perfis personalizados dos jogadores da FURIA e sistema de chatbot individual para cada membro da equipe.</p>
+            <p><strong>Tecnologias:</strong> HTML5, CSS3, JavaScript ES6+</p>
+            <a href="https://github.com/davifeels/chatbotfuria" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> Ver no GitHub
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-tools section-icon"></i>
+          Habilidades Técnicas
+        </h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4><i class="fas fa-code"></i> Linguagens de Programação</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">SQL</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4><i class="fas fa-layer-group"></i> Frameworks & Bibliotecas</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Spring Boot</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Angular</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">RxJS</span>
+              <span class="skill-tag">Angular Material</span>
+              <span class="skill-tag">Flask</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4><i class="fas fa-database"></i> Banco de Dados</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">NoSQL</span>
+              <span class="skill-tag">SQLite</span>
+              <span class="skill-tag">Modelagem</span>
+              <span class="skill-tag">Performance Tuning</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4><i class="fas fa-vial"></i> Testes & Qualidade</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Postman</span>
+              <span class="skill-tag">Karma/Jasmine</span>
+              <span class="skill-tag">Cypress</span>
+              <span class="skill-tag">Testes Unitários</span>
+              <span class="skill-tag">Testes E2E</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4><i class="fas fa-shield-alt"></i> Segurança</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">RSA</span>
+              <span class="skill-tag">AES</span>
+              <span class="skill-tag">JWT</span>
+              <span class="skill-tag">ICP-Brasil</span>
+              <span class="skill-tag">PKI</span>
+              <span class="skill-tag">Criptografia</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4><i class="fas fa-cloud"></i> DevOps & Cloud</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Kubernetes</span>
+              <span class="skill-tag">GitLab CI/CD</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">Linux</span>
+              <span class="skill-tag">Windows</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4><i class="fas fa-chart-line"></i> Análise de Dados</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">Elastic Search</span>
+              <span class="skill-tag">Business Intelligence</span>
+              <span class="skill-tag">Dashboards KPI</span>
+              <span class="skill-tag">ETL</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4><i class="fas fa-project-diagram"></i> Metodologias</h4>
+            <div class="skill-tags">
+              <span class="skill-tag">SCRUM</span>
+              <span class="skill-tag">Agile</span>
+              <span class="skill-tag">DevOps</span>
+              <span class="skill-tag">Clean Code</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">
+          <i class="fas fa-lightbulb section-icon"></i>
+          Competências Pessoais
+        </h2>
+        <div class="soft-skills">
+          <div class="soft-skill">
+            <i class="fas fa-comments"></i>
+            Comunicação Eficaz
+          </div>
+          <div class="soft-skill">
+            <i class="fas fa-users"></i>
+            Trabalho em Equipe
+          </div>
+          <div class="soft-skill">
+            <i class="fas fa-tasks"></i>
+            Gestão de Múltiplas Tarefas
+          </div>
+          <div class="soft-skill">
+            <i class="fas fa-rocket"></i>
+            Proatividade
+          </div>
+          <div class="soft-skill">
+            <i class="fas fa-puzzle-piece"></i>
+            Solução Criativa de Problemas
+          </div>
+          <div class="soft-skill">
+            <i class="fas fa-medal"></i>
+            Comprometimento com Qualidade
+          </div>
+          <div class="soft-skill">
+            <i class="fas fa-sync-alt"></i>
+            Adaptabilidade
+          </div>
+          <div class="soft-skill">
+            <i class="fas fa-clock"></i>
+            Gestão de Tempo
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="download-section">
+      <a href="davicurriculo.pdf" target="_blank" class="download-btn">
+        <i class="fas fa-download"></i>
+        Baixar PDF do Currículo
+      </a>
+    </div>
+  </div>
+</body>
+</html>
